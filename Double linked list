@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node* left;
+     struct node* right;
+};
+  void  print_values(struct node **head)
+    {
+        struct node*p=*head;
+        printf("elements:");
+        while(p!=NULL)
+        {
+            printf("%d ",p->data);
+            p=p->right;
+        }
+        printf("\n");
+    }
+    
+
+int main()
+{
+    struct node*head=NULL;
+    struct node*first=(struct node*)malloc(sizeof(struct node*));
+    first->data=10;
+    struct node*second=(struct node*)malloc(sizeof(struct node*));
+    second->data=20;
+     struct node*third=(struct node*)malloc(sizeof(struct node*));
+     third->data=30;
+      struct node*fourth=(struct node*)malloc(sizeof(struct node*));
+   fourth->data=40;
+   head=first;
+   first->left=NULL;
+    first->right=second;
+    second->left=first;
+    second->right=third;
+    third->left=second;
+    third->right=fourth;
+    fourth->left=third;
+    fourth->right=NULL;
+    print_values(&head);
+    return 0;
+}
